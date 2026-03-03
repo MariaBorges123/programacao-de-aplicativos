@@ -33,5 +33,10 @@ if total <=50 and total > 200.00:
 else:
     total_final = total + frete 
 
+    print("nome_do_cliente")
+    print("valor_total")
+    print("cupom_desconto")
+    print("valor_total")
+
 
 

@@ -4,4 +4,8 @@ prime = input("digite se você é prime (S/N): ")
 frete = 50.00 
 
 if valor_compra > 500.00 or (prime == "S" and valor_compra > 100.00):
-    
+    frete = 0.00
+
+valor_final = valor_compra + frete 
+
+print("valor total" , valor_final)

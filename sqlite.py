@@ -53,29 +53,29 @@ def listar_aluno():
 
 def alterar_nome_cpf():
 
-    conexao = sqlite3.connect('escola_demostracao.db')
-    cursor = conexao.cursor()
+    conexao = sqlite3.connect('escola_demostracao.db') #ABRE UMA CONEXÃO DE DADOS DO BANCO
+    cursor = conexao.cursor() #CRIA UM CURSOR
 
-    cpf_atual = input("Digite o CPF do aluno que deseja alterar: ")
+    cpf_atual = input("Digite o CPF do aluno que deseja alterar: ") #SOLICITA QUE O USUARIO DIGITE O NOVO CPF 
 
-    cursor.execute(f'''SELECT nome, cpf FROM alunos WHERE cpf = '{cpf_atual}' ''')
-    aluno = cursor.fetchone()
+    cursor.execute(f'''SELECT nome, cpf FROM alunos WHERE cpf = '{cpf_atual}' ''') #SELECIONA O NOME, CPF DE ALUNOS ONDE CPF = CPF ATUAL
+    aluno = cursor.fetchone() #FECHA UM
 
-    if aluno is None:
+    if aluno is None: #SE O ALUNO FOR "VAZIO" VAI MOSTRAR O PRINT "NÃO ENCONTRADO"
         print("Aluno não encontrado!")
     else:
         print(f"Nome atual: {aluno[0]}")
         print(f"CPF atual: {aluno[1]}")
 
-        novo_nome = input("Digite o novo nome: ")
-        novo_cpf = input("Digite o novo CPF: ")
+        novo_nome = input("Digite o novo nome: ") #DIGITE O NOME DO NOVO ALUNO
+        novo_cpf = input("Digite o novo CPF: ") #DIGITE O CPF PRO NOVO CADASTRO
 
         cursor.execute(f'''
-                UPDATE alunos
-                SET nome = '{novo_nome}', cpf = '{novo_cpf}'
-                WHERE cpf = {cpf_atual}
+                UPDATE alunos #ATUALIZE OS REGISTROS DA TABELA ALUNOS
+                SET nome = '{novo_nome}', cpf = '{novo_cpf}' #DEFINE OS VALORES 
+                WHERE cpf = {cpf_atual} #INDICA QUAL REGISTRO QUE VAI SER ALTERADO
             ''')
-        conexao.commit()
+        conexao.commit() #SERVE PARA SALVAR AS ALTERAÇÕES FEITAS 
 
         print("Dados alterados com sucesso!")
 

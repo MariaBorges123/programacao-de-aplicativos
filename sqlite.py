@@ -79,32 +79,32 @@ def alterar_nome_cpf():
 
         print("Dados alterados com sucesso!")
 
-        conexao.close()
+        conexao.close() #FECHA A CONEXÃO COM O BANCO DE DADOS
 
-def excluir_aluno():
+def excluir_aluno(): #FUNÇÃO CRIADA PRA EXCLUIR ALUNO
 
-    conexao = sqlite3.connect('escola_demostracao.db')
+    conexao = sqlite3.connect('escola_demostracao.db') #ABRE O BANCO DE DADOS
     cursor = conexao.cursor()
 
-    id_aluno = int(input("Digite o ID do aluno que deseja excluir: "))
+    id_aluno = int(input("Digite o ID do aluno que deseja excluir: ")) #PEDE PRO USUARIO DIGITAR O ID DO ALUNO QUE DESEJA EXCLUIR
 
     cursor.execute(f'''SELECT nome FROM alunos WHERE id = '{id_aluno}' ''')
     aluno = cursor.fetchone()
 
-    if aluno is None:
+    if aluno is None: #VERIFICA SE NENHUM ALUNO FOI ENCONTRADO
         print("Aluno não encontrado!")
     else:
-        print(f"Aluno encontrado: {aluno[0]}")
+        print(f"Aluno encontrado: {aluno[0]}") #MOSTRA O NOME DO ALUNO ENCONTRADO
 
-        confirmacao = input("Deseja realmente excluir? (s/n): ")
+        confirmacao = input("Deseja realmente excluir? (s/n): ") #PERGUNTA SE O USUARIO QUER EXCLUIR O ALUNO
 
-        if confirmacao.lower() == "s":
-            cursor.execute("DELETE FROM alunos WHERE id = ?", (id_aluno,))
-            conexao.commit()
+        if confirmacao == "s": # SE RESPOSTA FOR IGAUL A "sim" EXECUTE O CURSOR
+            cursor.execute(f'''"DELETE FROM alunos WHERE id = {id_aluno}''') #AQUI ATUALIZAMOS OS DADOS
+            conexao.commit() #SALVA O ARQUIVO NO BANCO DE DADOS
             print("Aluno excluído com sucesso!")
         else:
             print("Exclusão cancelada.")
 
-    conexao.close()
+    conexao.close() 
 
-excluir_aluno()
+excluir_aluno() #CHAMA A FUNÇÃO

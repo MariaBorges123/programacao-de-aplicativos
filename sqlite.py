@@ -51,10 +51,10 @@ def listar_aluno():
         print("-" * 30)#SIGNIFICA QUE O - IRÁ SE REPETIR 30x PARA SEPARAR A LISTA DE ALUNOS
 
 
-def alterar_nome_cpf():
+def alterar():
 
     conexao = sqlite3.connect('escola_demostracao.db') #ABRE UMA CONEXÃO DE DADOS DO BANCO
-    cursor = conexao.cursor() #CRIA UM CURSOR
+    cursor = conexao.cursor()
 
     cpf_atual = input("Digite o CPF do aluno que deseja alterar: ") #SOLICITA QUE O USUARIO DIGITE O NOVO CPF 
 

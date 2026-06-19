@@ -1,4 +1,3 @@
-from platform import processor
 import sqlite3
 
 def cadastrar_professor():
@@ -7,7 +6,7 @@ def cadastrar_professor():
     cursor = conexao.cursor()
 
     cursor.execute('''
-                    CREAT TABLE IF NOT EXISTS professores(
+                    CREATE TABLE IF NOT EXISTS professores(
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     nome TEXT NOT NULL,
                     telefone TEXT,
@@ -15,7 +14,7 @@ def cadastrar_professor():
                     idade INTEGER,
                     cpf TEXT UNIQUE NOT NULL,
                     salario REAL NOT NULL,
-                    escola TEXT NOT NULL,
+                    escola TEXT NOT NULL
                    )''')
     
     nome_professor = input("Digite o nome do professor: ")
@@ -40,10 +39,10 @@ def cadastrar_professor():
 
 def listar_professor():
 
-    conexao = sqlite3.connect('escola_demostracao.db')
+    conexao = sqlite3.connect('escola_demonstracao.db')
     cursor = conexao.cursor()
 
-    cursor.execute("SELECT * FROM professores")
+    cursor.execute('''SELECT * FROM professores''')
     professores = cursor.fetchall() 
 
     print("===lista de professores===")
@@ -59,7 +58,7 @@ def listar_professor():
 
 def alterar_nome_cpf():
 
-    conexao = sqlite3.connect('escola_demostracao.db')
+    conexao = sqlite3.connect('escola_demonstracao.db')
     cursor = conexao.cursor() 
 
     cpf_atual = input("Digite o CPF do professor que deseja alterar: ")
@@ -89,7 +88,7 @@ def alterar_nome_cpf():
 
 def excluir_professor():
 
-    conexao = sqlite3.connect('escola_demostracao.db')
+    conexao = sqlite3.connect('escola_demonstracao.db')
     cursor = conexao.cursor()
 
     id_professor = int(input("Digite o ID do professor que deseja excluir: ")) 

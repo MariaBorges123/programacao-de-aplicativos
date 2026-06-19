@@ -13,6 +13,8 @@ def cadastrar_aluno():
                     turma TEXT,
                     idade INTEGER,
                     cpf TEXT UNIQUE NOT NULL
+                    id_professor INTEGER,
+                    FOREIGN KEY (id_professor) REFERENCES professores (id)
                 )''')
 
     nome_aluno = input("Digite o nome do aluno: ")
@@ -20,9 +22,10 @@ def cadastrar_aluno():
     turma_aluno = input("Digite a turma: ")
     idade_aluno = int(input("Digite a idade do novo aluno: "))
     cpf_aluno = input("Digite o cpf do aluno: ")
+    id_professor = int(input("Digite o ID do professor: "))
 
     comando_inserir = (f'''INSERT INTO alunos(nome, telefone, turma, idade, cpf)
-                        VALUES('{nome_aluno}', '{telefone_aluno}', '{turma_aluno}', {idade_aluno} , '{cpf_aluno}')''')
+                        VALUES('{nome_aluno}', '{telefone_aluno}', '{turma_aluno}', {idade_aluno} , '{cpf_aluno}' , {id_professor}''')
 
     cursor.execute(comando_inserir)
     conexao.commit()
@@ -48,6 +51,7 @@ def listar_aluno():
         print(f"Turma: {aluno[3]}")
         print(f"Idade: {aluno[4]}")
         print(f"CPF: {aluno[5]}")
+        print(f"ID do professor: {aluno[6]}")
         print("-" * 30)#SIGNIFICA QUE O - IRÁ SE REPETIR 30x PARA SEPARAR A LISTA DE ALUNOS
 
 

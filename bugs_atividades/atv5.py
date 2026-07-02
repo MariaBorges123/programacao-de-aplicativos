@@ -13,6 +13,9 @@ def vincular_aluno_turma():
         conexao.commit()
     except sqlite3.Error:
         print("Erro no banco de dados!")
+    except sqlite3.Error:
+        print("Erro de digitação!")
     finally:
         conexao.close()
         
+# Não estava dando certo pois faltava um except para indentificação do erro de digitação

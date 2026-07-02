@@ -15,6 +15,3 @@ def listar_alunos_e_turmas():
         print(f"Aluno: {linha[0]} / Turma: {linha[1]}")
         
     conexao.close()
-
-# Para testar:
-# listar_alunos_e_turmas()

@@ -11,3 +11,5 @@ def cadastrar_turma(nome, id_serie, id_prof):
     cursor.execute("INSERT INTO turmas (nome_turma, id_serie, id_professor) VALUES (?, ?)" , (nome, id_serie, id_prof))
     conexao.commit()
     conexao.close()
+
+    # A conexao.close() não vai ser executada se der erro no código

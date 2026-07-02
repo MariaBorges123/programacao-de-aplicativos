@@ -6,8 +6,9 @@ def buscar_professor(id_prof):
 
     #O python reclama de "Incorrect number of bindings"
     #Estamos passando a variavel, por que ocorre erro?
-    cursor.execute("SELECT nome FROM professores WHERE id = ?" , (id_prof))
+    cursor.execute("SELECT nome FROM professores WHERE id = ?" , (id_prof,))
     resultado = cursor.fethone()
     print(resultado)
     conexao.close()
     
+    #Não estava dando certo pois faltava uma , para o sistema conseguir enterpretar o código

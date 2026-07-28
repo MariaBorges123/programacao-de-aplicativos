@@ -6,8 +6,9 @@ def deletar_escola_antiga():
     cursor = conexao.cursor()
 
 #Esse comando vai apagar o banco inteiro se o aluno não prestar atenção.
-cursor.execute("DELETE FROM escolas WHERE id = id_escola")
+    cursor.execute("DELETE FROM escolas WHERE id = ?", (id_escola,))
 
-conexao.commit()
-conexao.close()
+    conexao.commit()
+    conexao.close()
 
+# O erro está na linha 10, onde o id_escola estava escrito dentro da string do SQLite nas aspas "". O valor é passado como parâmetro usando "?" e (id_escola,)

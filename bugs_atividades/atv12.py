@@ -12,3 +12,5 @@ def inserir_escola(nome):
     conexao.commit()
 
 # A conexão e o cursor foram criados fora do def, oq faz com que de erro no código
+
+inserir_escola()

@@ -3,11 +3,26 @@ import sqlite3
 def verificar_registros():
     conexao = sqlite3.connect('sistema_escola.db')
     cursor = conexao.cursor()
- 
-cursor.execute("SELECT * FROM alunos")
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS alunos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT,
+            idade INTEGER,
+            turma TEXT
+        )
+        """)
+
+    cursor.execute("SELECT * FROM alunos") 
+
 
 # Por que o segundo print não mostra absolutamente nada no controle?
-print("Primeiro print:", cursor.fetchall())
-print("Segundo print;", cursor.fatchall())
 
-conexao.close()
+    registros = cursor.fetchall()
+
+    print("Primeiro print:", registros)
+    print("Segundo print;", registros)
+
+    conexao.close()
+
+verificar_registros()

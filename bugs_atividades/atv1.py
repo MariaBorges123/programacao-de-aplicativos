@@ -5,11 +5,11 @@ def inicializar_banco():
     cursor = conexao.cursor()
 
     cursor.execute('''
-CREATE TABLE IF NOT EXISTS escolas (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-nome TEXT NOT NULL
- )
- ''')
+    '    CREATE TABLE IF NOT EXISTS escolas (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL
+        )
+    ''')'
 # o banco não está salvando as alterações. Por quê?
     conexao.commit() #faltava o conexao.commit para armazenar os dados
     conexao.close()

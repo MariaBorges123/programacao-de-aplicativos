@@ -19,3 +19,8 @@ def cadastrar_serie_seguro(nome, id_escola):
     finally:
         if conexao:
             conexao.close()
+
+nome = input("Digite o nome: ")
+id_escola = int(input("Digite o id escola: "))
+
+cadastrar_serie_seguro(nome, id_escola)

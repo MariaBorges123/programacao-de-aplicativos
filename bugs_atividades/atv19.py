@@ -7,8 +7,15 @@ def buscar_dados_dinamicos(nome_tabela, id_registro):
     # O SQLite joga um erro de sintaxe operacional indicando que não aceita o
     # caractere '?'.
     # Não podemos parametrizar nomes de tabelas? Como resolver mantendo a segurança?
-    cursor.execute("SELECT * FROM ? WHERE id = ?", (nome_tabela, id_registro))
+    cursor.execute(f"SELECT * FROM {nome_tabela} WHERE id = ?" , (id_registro,))
 
     print(cursor.fetchone())
 
     conexao.close()
+
+nome_tabela = input("digite o nome da tabela:" )
+id_registro = int(input("digite o id_registro:  "))
+
+buscar_dados_dinamicos(nome_tabela, id_registro)
+
+

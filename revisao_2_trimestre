@@ -56,7 +56,7 @@ def cadastrar_salas():
 def listar():
     print("\n ---LISTA DE SALA---")
     try:
-        cursor.excute('SELECT * FROM salas')
+        cursor.execute('SELECT * FROM salas')
         todas_salas = cursor.fetchall()
 
         if not todas_salas:

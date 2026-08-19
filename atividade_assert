@@ -1,0 +1,12 @@
+def eh_par(numero):
+    return numero % 2 == 0
+
+
+
+assert eh_par(10) == True #Retorna 0, então é par
+
+assert eh_par(5) == False #pois o número não é par e sim impar.
+
+assert eh_par(0) == True #está correto.
+
+assert eh_par(-4) == True #apesar de ser um número negativo o 4 ainda é um numero par.

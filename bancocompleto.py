@@ -125,8 +125,6 @@ def deletar_alunos():
         cursor.execute(f'''DELETE FROM alunos WHERE id = {id_aluno}''')
         conexao.commit()
         print("aluno(a) deletado")
-    except ValueError:
-        print("erro de valor no cadastro tente novamente")
     except TypeError:
         print("erro de tipo de dados") 
     except ZeroDivisionError:

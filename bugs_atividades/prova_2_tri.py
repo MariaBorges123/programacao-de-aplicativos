@@ -316,7 +316,5 @@ def menu():
             print("Opção inválida!")
 conexao.commit()
 
-
-
 menu()
 conexao.close()
